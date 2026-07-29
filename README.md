@@ -1,2 +1,2 @@
-# Bot-Discord-Perubahan-Iklim
-Bot discord untuk membantu user memahami bahaya perubahan iklim
+# Website-Perubahan-Iklim
+Website untuk membantu user memahami bahaya perubahan iklim dan cara untuk melakukan aksi nyata demi lingkungan
