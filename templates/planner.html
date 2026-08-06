@@ -1,0 +1,292 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <!-- Header -->
+
+    <div class="text-center mb-5">
+
+        <span class="badge bg-success px-3 py-2">
+            🌱 AI Lifestyle Planner
+        </span>
+
+        <h1 class="display-5 fw-bold mt-3">
+
+            Your Weekly Eco Plan
+
+        </h1>
+
+        <p class="text-muted">
+
+            Small daily actions recommended by Google Gemini
+            to help you build sustainable habits.
+
+        </p>
+
+    </div>
+
+    <!-- Progress -->
+
+    <div class="card border-0 shadow rounded-4 mb-5">
+
+        <div class="card-body p-4">
+
+            <div class="d-flex justify-content-between mb-3">
+
+                <h3>Weekly Progress</h3>
+
+                <h3 id="progressText">0%</h3>
+
+            </div>
+
+            <div class="progress mt-3" style="height:20px">
+
+                <div
+                    id="progressBar"
+                    class="progress-bar bg-success"
+                    style="width:0%"
+                    role="progressbar">
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Weekly Tasks -->
+
+    <div class="row g-4">
+
+        <!-- Monday -->
+
+        <div class="col-lg-4">
+
+            <div class="card shadow border-0 rounded-4 h-100 eco-card">
+
+                <div class="card-body">
+
+                    <h3>🌞 Monday</h3>
+
+                    <hr>
+
+                    <div class="form-check mb-3">
+
+                        <input class="task-check form-check-input" type="checkbox">
+
+                        <label class="form-check-label">
+
+                            Bring a reusable bottle
+
+                        </label>
+
+                    </div>
+
+                    <div class="form-check mb-3">
+
+                        <input class="task-check form-check-input" type="checkbox">
+
+                        <label class="form-check-label">
+
+                            Walk instead of driving
+
+                        </label>
+
+                    </div>
+
+                    <div class="form-check">
+
+                        <input class="task-check form-check-input" type="checkbox">
+
+                        <label class="form-check-label">
+
+                            Turn off unused lights
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Wednesday -->
+
+        <div class="col-lg-4">
+
+            <div class="card shadow border-0 rounded-4 h-100 eco-card">
+
+                <div class="card-body">
+
+                    <h3>🌿 Wednesday</h3>
+
+                    <hr>
+
+                    <div class="form-check mb-3">
+
+                        <input class="task-check form-check-input" type="checkbox">
+
+                        <label class="form-check-label">
+
+                            Separate recyclable waste
+
+                        </label>
+
+                    </div>
+
+                    <div class="form-check mb-3">
+
+                        <input class="task-check form-check-input" type="checkbox">
+
+                        <label class="form-check-label">
+
+                            Use public transport
+
+                        </label>
+
+                    </div>
+
+                    <div class="form-check">
+
+                        <input class="task-check form-check-input" type="checkbox">
+
+                        <label class="form-check-label">
+
+                            Avoid plastic bags
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- Friday -->
+
+        <div class="col-lg-4">
+
+            <div class="card shadow border-0 rounded-4 h-100 eco-card">
+
+                <div class="card-body">
+
+                    <h3>🌍 Friday</h3>
+
+                    <hr>
+
+                    <div class="form-check mb-3">
+
+                        <input class="task-check form-check-input" type="checkbox">
+
+                        <label class="form-check-label">
+
+                            Eat one plant-based meal
+
+                        </label>
+
+                    </div>
+
+                    <div class="form-check mb-3">
+
+                        <input class="task-check form-check-input" type="checkbox">
+
+                        <label class="form-check-label">
+
+                            Save water while showering
+
+                        </label>
+
+                    </div>
+
+                    <div class="form-check">
+
+                        <input class="task-check form-check-input" type="checkbox">
+
+                        <label class="form-check-label">
+
+                            Share one climate fact
+
+                        </label>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- AI Recommendation -->
+
+    <div class="card border-0 shadow rounded-4 mt-5">
+
+        <div class="card-body p-5">
+
+            <h3 class="mb-4">
+
+                🤖 AI Recommendation
+
+            </h3>
+
+            <blockquote class="blockquote">
+
+                <p>
+
+                    Based on your lifestyle analysis,
+                    transportation contributes the most to your
+                    carbon footprint.
+
+                    This week, try replacing at least two short
+                    trips with walking or public transport.
+
+                </p>
+
+            </blockquote>
+
+        </div>
+
+    </div>
+
+    <!-- Motivation -->
+
+    <div class="card border-0 shadow rounded-4 mt-4">
+
+        <div class="card-body text-center p-5">
+
+            <i class="fa-solid fa-seedling fa-4x text-success mb-4"></i>
+
+            <h3>
+
+                Every Small Action Matters
+
+            </h3>
+
+            <p class="text-muted">
+
+                Building sustainable habits is a journey.
+                Complete your weekly plan and let EcoPath AI
+                guide you toward a greener lifestyle.
+
+            </p>
+
+            <a href="/analysis" class="btn btn-success btn-lg">
+
+                Generate New Plan
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

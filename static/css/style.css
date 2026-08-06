@@ -1,0 +1,1636 @@
+/* ---------- Google Fonts ---------- */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&family=Poppins:wght@400;500;600;700&display=swap');
+
+/* ---------- Variables ---------- */
+
+:root{
+
+    --primary:#2E7D32;
+    --primary-light:#66BB6A;
+    --primary-dark:#1B5E20;
+
+    --accent:#8BC34A;
+
+    --cream:#F7F5EF;
+    --cream-dark:#EEE8DC;
+
+    --white:#FFFFFF;
+
+    --text:#2B2B2B;
+    --text-light:#666666;
+
+    --shadow:0 12px 30px rgba(0,0,0,.08);
+
+    --radius:20px;
+
+    --transition:.30s ease;
+
+}
+
+/* ---------- Global ---------- */
+
+*{
+
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+
+}
+
+html{
+
+    scroll-behavior:smooth;
+
+}
+
+body{
+
+    background:var(--cream);
+
+    color:var(--text);
+
+    font-family:'Inter',sans-serif;
+
+}
+
+/* ---------- Typography ---------- */
+
+h1,h2,h3,h4,h5,h6{
+
+    font-family:'Poppins',sans-serif;
+
+    font-weight:600;
+
+}
+
+.display-4,
+.display-5{
+
+    font-weight:700;
+
+}
+
+p{
+
+    color:var(--text-light);
+
+    line-height:1.7;
+
+}
+
+/* ---------- Links ---------- */
+
+a{
+
+    text-decoration:none;
+
+    transition:var(--transition);
+
+}
+
+/* ---------- Wrapper ---------- */
+
+#wrapper{
+
+    display:flex;
+
+    min-height:100vh;
+
+}
+
+/* ======================================================
+                    SIDEBAR
+====================================================== */
+
+#sidebar-wrapper{
+
+    width:270px;
+
+    min-height:100vh;
+
+    background:linear-gradient(
+        180deg,
+        var(--primary),
+        var(--primary-light)
+    );
+
+    color:white;
+
+    position:fixed;
+
+    left:0;
+    top:0;
+
+    box-shadow:var(--shadow);
+
+    z-index:999;
+
+}
+
+.sidebar-heading{
+
+    padding:28px;
+
+    font-size:1.5rem;
+
+    font-weight:700;
+
+    text-align:center;
+
+    letter-spacing:.5px;
+
+    border-bottom:1px solid rgba(255,255,255,.15);
+
+}
+
+.sidebar-heading i{
+
+    margin-right:10px;
+
+}
+
+/* ---------- Sidebar Links ---------- */
+
+.list-group{
+
+    margin-top:15px;
+
+}
+
+.list-group-item{
+
+    background:transparent;
+
+    color:white;
+
+    border:none;
+
+    padding:18px 28px;
+
+    font-weight:500;
+
+    transition:var(--transition);
+
+}
+
+.list-group-item i{
+
+    width:30px;
+
+    font-size:18px;
+
+}
+
+.list-group-item:hover{
+
+    background:rgba(255,255,255,.18);
+
+    color:white;
+
+    padding-left:36px;
+
+}
+
+.list-group-item.active{
+
+    background:white;
+
+    color:var(--primary);
+
+    font-weight:600;
+
+}
+
+/* ======================================================
+                  PAGE CONTENT
+====================================================== */
+
+#page-content-wrapper{
+
+    width:100%;
+
+    margin-left:270px;
+
+}
+
+/* ======================================================
+                    NAVBAR
+====================================================== */
+
+.navbar{
+
+    background:var(--cream-dark);
+
+    border-bottom:1px solid rgba(0,0,0,.06);
+
+    padding:18px 35px;
+
+}
+
+.navbar h5{
+
+    color:var(--primary);
+
+    font-weight:700;
+
+}
+
+/* ======================================================
+                  MAIN CONTAINER
+====================================================== */
+
+.container-fluid{
+
+    padding:35px;
+
+}
+
+/* ======================================================
+                    BUTTONS
+====================================================== */
+
+.btn{
+
+    border-radius:14px;
+
+    padding:11px 22px;
+
+    transition:var(--transition);
+
+}
+
+.btn-success{
+
+    background:var(--primary);
+
+    border:none;
+
+}
+
+.btn-success:hover{
+
+    background:var(--primary-dark);
+
+    transform:translateY(-3px);
+
+    box-shadow:0 10px 25px rgba(46,125,50,.25);
+
+}
+
+.btn-outline-success{
+
+    border:2px solid var(--primary);
+
+    color:var(--primary);
+
+}
+
+.btn-outline-success:hover{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+/* ======================================================
+                    CARDS
+====================================================== */
+
+.card{
+
+    border:none;
+
+    border-radius:var(--radius);
+
+    box-shadow:var(--shadow);
+
+    overflow:hidden;
+
+}
+
+.eco-card{
+
+    transition:var(--transition);
+
+}
+
+.eco-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 18px 40px rgba(0,0,0,.12);
+
+}
+
+.card-body{
+
+    padding:2rem;
+
+}
+
+/* ======================================================
+                  BADGES
+====================================================== */
+
+.badge{
+
+    border-radius:999px;
+
+    font-weight:500;
+
+    padding:.65rem 1rem;
+
+}
+
+/* ======================================================
+                 FORM ELEMENTS
+====================================================== */
+
+.form-control,
+.form-select{
+
+    border-radius:14px;
+
+    border:1px solid #dddddd;
+
+    padding:12px 16px;
+
+    transition:var(--transition);
+
+}
+
+.form-control:focus,
+.form-select:focus{
+
+    border-color:var(--primary);
+
+    box-shadow:0 0 0 .2rem rgba(46,125,50,.18);
+
+}
+
+/* ======================================================
+                 PROGRESS BAR
+====================================================== */
+
+.progress{
+
+    height:12px;
+
+    border-radius:999px;
+
+    background:#dfe6dc;
+
+}
+
+.progress-bar{
+
+    border-radius:999px;
+
+}
+
+/* ======================================================
+                   UTILITIES
+====================================================== */
+
+.text-success{
+
+    color:var(--primary)!important;
+
+}
+
+.bg-success{
+
+    background:var(--primary)!important;
+
+}
+
+.rounded-4{
+
+    border-radius:24px!important;
+
+}
+
+.shadow-sm{
+
+    box-shadow:var(--shadow)!important;
+
+}
+
+/* ======================================================
+              SCROLLBAR
+====================================================== */
+
+::-webkit-scrollbar{
+
+    width:10px;
+
+}
+
+::-webkit-scrollbar-thumb{
+
+    background:var(--primary-light);
+
+    border-radius:20px;
+
+}
+
+::-webkit-scrollbar-track{
+
+    background:var(--cream);
+
+}
+
+/* ======================================================
+              SMALL SCREEN
+====================================================== */
+
+@media (max-width:992px){
+
+    #sidebar-wrapper{
+
+        width:85px;
+
+    }
+
+    .sidebar-heading{
+
+        font-size:0;
+
+    }
+
+    .sidebar-heading i{
+
+        font-size:28px;
+
+        margin:0;
+
+    }
+
+    .list-group-item{
+
+        text-align:center;
+
+        padding:20px 0;
+
+        font-size:0;
+
+    }
+
+    .list-group-item i{
+
+        font-size:22px;
+
+        margin:0;
+
+    }
+
+    #page-content-wrapper{
+
+        margin-left:85px;
+
+    }
+
+}
+
+/* ======================================================
+                    HERO SECTION
+====================================================== */
+
+.hero-section{
+
+    background:linear-gradient(
+        135deg,
+        #ffffff 0%,
+        #eef8ee 100%
+    );
+
+    border-radius:30px;
+
+    min-height:500px;
+
+    display:flex;
+    align-items:center;
+
+    position:relative;
+
+    overflow:hidden;
+
+}
+
+.hero-section::before{
+
+    content:"";
+
+    position:absolute;
+
+    width:420px;
+    height:420px;
+
+    right:-120px;
+    top:-120px;
+
+    background:rgba(102,187,106,.15);
+
+    border-radius:50%;
+
+}
+
+.hero-section::after{
+
+    content:"";
+
+    position:absolute;
+
+    width:260px;
+    height:260px;
+
+    left:-70px;
+    bottom:-70px;
+
+    background:rgba(139,195,74,.15);
+
+    border-radius:50%;
+
+}
+
+.hero-section h1{
+
+    color:var(--text);
+
+    font-size:3.5rem;
+
+    line-height:1.2;
+
+}
+
+.hero-section .lead{
+
+    max-width:600px;
+
+}
+
+.hero-section img{
+
+    animation:float 5s ease-in-out infinite;
+
+}
+
+.hero-earth{
+    width:320px;
+    height:320px;
+    border-radius:50%;
+    background:linear-gradient(
+        135deg,
+        #f7fbf7 0%,
+        #eef8ee 100%
+    );
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    margin:auto;
+}
+
+.hero-earth i{
+    font-size:180px;
+    color:#2e7d32;
+
+    animation: rotateEarth 18s linear infinite;
+}
+
+@keyframes rotateEarth{
+    from{
+        transform: rotate(0deg);
+    }
+    to{
+        transform: rotate(360deg);
+    }
+}
+
+/* ======================================================
+                    FEATURE CARDS
+====================================================== */
+
+.eco-card{
+
+    background:white;
+
+    border-radius:24px;
+
+    transition:.35s;
+
+    overflow:hidden;
+
+    position:relative;
+
+}
+
+.eco-card::before{
+
+    content:"";
+
+    position:absolute;
+
+    top:0;
+
+    left:0;
+
+    width:100%;
+
+    height:6px;
+
+    background:linear-gradient(
+        90deg,
+        var(--primary),
+        var(--accent)
+    );
+
+}
+
+.eco-card:hover{
+
+    transform:translateY(-10px);
+
+}
+
+.eco-card i{
+
+    transition:.3s;
+
+}
+
+.eco-card:hover i{
+
+    transform:scale(1.15);
+
+    color:var(--primary);
+
+}
+
+.eco-card h3{
+
+    margin-top:15px;
+
+    margin-bottom:15px;
+
+}
+
+.eco-card p{
+
+    min-height:90px;
+
+}
+
+/* ======================================================
+                    STATISTICS
+====================================================== */
+
+.stats-card{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:30px;
+
+    text-align:center;
+
+    transition:.3s;
+
+}
+
+.stats-card:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.stats-icon{
+
+    width:80px;
+
+    height:80px;
+
+    margin:auto;
+
+    border-radius:50%;
+
+    background:#edf8ee;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+.stats-icon i{
+
+    font-size:36px;
+
+    color:var(--primary);
+
+}
+
+.stats-number{
+
+    font-size:2.3rem;
+
+    font-weight:700;
+
+    color:var(--primary);
+
+}
+
+/* ======================================================
+                  HOW IT WORKS
+====================================================== */
+
+.step-box{
+
+    transition:.35s;
+
+}
+
+.step-box:hover{
+
+    transform:translateY(-8px);
+
+}
+
+.step-circle{
+
+    width:90px;
+
+    height:90px;
+
+    border-radius:50%;
+
+    margin:auto;
+
+    margin-bottom:20px;
+
+    background:#edf8ee;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.step-circle i{
+
+    font-size:34px;
+
+    color:var(--primary);
+
+}
+
+/* ======================================================
+                    NEWS PAGE
+====================================================== */
+
+.news-card{
+
+    overflow:hidden;
+
+}
+
+.news-card img{
+
+    transition:.45s;
+
+}
+
+.news-card:hover img{
+
+    transform:scale(1.08);
+
+}
+
+.news-category{
+
+    display:inline-block;
+
+    background:#edf8ee;
+
+    color:var(--primary);
+
+    padding:6px 14px;
+
+    border-radius:999px;
+
+    font-size:.85rem;
+
+    font-weight:600;
+
+}
+
+.news-title{
+
+    font-size:1.3rem;
+
+    margin-top:15px;
+
+    margin-bottom:15px;
+
+}
+
+.news-footer{
+
+    display:flex;
+
+    justify-content:space-between;
+
+    align-items:center;
+
+}
+
+.news-footer small{
+
+    color:#888;
+
+}
+
+/* ======================================================
+                SEARCH BAR
+====================================================== */
+
+.input-group{
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+}
+
+.input-group-text{
+
+    border:none;
+
+}
+
+.input-group input{
+
+    border:none;
+
+}
+
+.input-group input:focus{
+
+    box-shadow:none;
+
+}
+
+/* ======================================================
+                  ANALYSIS PAGE
+====================================================== */
+
+.analysis-form{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:35px;
+
+}
+
+.analysis-form label{
+
+    font-weight:600;
+
+    margin-bottom:8px;
+
+}
+
+.analysis-result{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:35px;
+
+    min-height:650px;
+
+}
+
+/* ======================================================
+                  SCORE BOX
+====================================================== */
+
+.score-card{
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary-light)
+    );
+
+    color:white;
+
+    border-radius:24px;
+
+    padding:30px;
+
+    margin-bottom:25px;
+
+}
+
+.score-number{
+
+    font-size:3rem;
+
+    font-weight:700;
+
+}
+
+/* ======================================================
+                RECOMMENDATION CARD
+====================================================== */
+
+.recommendation-card{
+
+    background:#edf8ee;
+
+    border-left:6px solid var(--primary);
+
+    border-radius:18px;
+
+    padding:20px;
+
+    margin-top:20px;
+
+}
+
+.recommendation-card h5{
+
+    color:var(--primary);
+
+}
+
+/* ======================================================
+                 AI LOADING
+====================================================== */
+
+.ai-loading{
+
+    text-align:center;
+
+    padding:60px 20px;
+
+}
+
+.ai-loading .spinner-border{
+
+    width:70px;
+
+    height:70px;
+
+}
+
+.ai-loading h5{
+
+    margin-top:25px;
+
+}
+
+/* ======================================================
+              FEATURE ICONS
+====================================================== */
+
+.feature-icon{
+
+    width:85px;
+
+    height:85px;
+
+    border-radius:50%;
+
+    background:#edf8ee;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin:auto;
+
+    margin-bottom:20px;
+
+}
+
+.feature-icon i{
+
+    color:var(--primary);
+
+    font-size:36px;
+
+}
+
+/* ======================================================
+                NEWSLETTER CARD
+====================================================== */
+
+.newsletter{
+
+    background:linear-gradient(
+        135deg,
+        #ffffff,
+        #eef8ee
+    );
+
+}
+
+/* ======================================================
+                    FLOAT ANIMATION
+====================================================== */
+
+@keyframes float{
+
+    0%{
+
+        transform:translateY(0);
+
+    }
+
+    50%{
+
+        transform:translateY(-12px);
+
+    }
+
+    100%{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ======================================================
+                FADE-UP ANIMATION
+====================================================== */
+
+.fade-up{
+
+    animation:fadeUp .7s ease;
+
+}
+
+@keyframes fadeUp{
+
+    from{
+
+        opacity:0;
+
+        transform:translateY(40px);
+
+    }
+
+    to{
+
+        opacity:1;
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ======================================================
+            HOVER BUTTON EFFECT
+====================================================== */
+
+.btn-success i{
+
+    transition:.3s;
+
+}
+
+.btn-success:hover i{
+
+    transform:translateX(4px);
+
+}
+
+/* ======================================================
+               IMAGE SHADOW
+====================================================== */
+
+.hero-section img,
+.news-card img{
+
+    filter:drop-shadow(0 20px 30px rgba(0,0,0,.12));
+
+}
+
+/* ======================================================
+                PLANNER HEADER
+====================================================== */
+
+.planner-header{
+
+    background:linear-gradient(
+        135deg,
+        var(--primary),
+        var(--primary-light)
+    );
+
+    color:white;
+
+    padding:50px;
+
+    border-radius:28px;
+
+    margin-bottom:40px;
+
+}
+
+.planner-header h1{
+
+    color:white;
+
+}
+
+.planner-header p{
+
+    color:rgba(255,255,255,.9);
+
+}
+
+
+/* ======================================================
+                WEEKLY PROGRESS
+====================================================== */
+
+.progress-card{
+
+    background:white;
+
+    border-radius:24px;
+
+    padding:30px;
+
+    box-shadow:var(--shadow);
+
+}
+
+.progress-percent{
+
+    color:var(--primary);
+
+    font-size:2rem;
+
+    font-weight:700;
+
+}
+
+
+/* ======================================================
+                DAY CARDS
+====================================================== */
+
+.day-card{
+
+    border-radius:22px;
+
+    transition:.35s;
+
+    overflow:hidden;
+
+    background:white;
+
+}
+
+.day-card:hover{
+
+    transform:translateY(-8px);
+
+    box-shadow:0 18px 35px rgba(0,0,0,.12);
+
+}
+
+.day-title{
+
+    color:var(--primary);
+
+    font-weight:700;
+
+    margin-bottom:20px;
+
+}
+
+
+/* ======================================================
+                CHECKLIST
+====================================================== */
+
+.form-check{
+
+    padding:12px 0;
+
+}
+
+.form-check-input{
+
+    width:22px;
+
+    height:22px;
+
+    cursor:pointer;
+
+}
+
+.form-check-input:checked{
+
+    background-color:var(--primary);
+
+    border-color:var(--primary);
+
+}
+
+.form-check-label{
+
+    margin-left:10px;
+
+    cursor:pointer;
+
+    transition:.25s;
+
+}
+
+.form-check-input:checked
++ .form-check-label{
+
+    text-decoration:line-through;
+
+    color:#888;
+
+}
+
+
+/* ======================================================
+                AI RECOMMENDATION
+====================================================== */
+
+.ai-card{
+
+    background:linear-gradient(
+        135deg,
+        #ffffff,
+        #eef8ee
+    );
+
+    border-left:6px solid var(--primary);
+
+}
+
+.ai-card h3{
+
+    color:var(--primary);
+
+}
+
+
+/* ======================================================
+                MOTIVATION
+====================================================== */
+
+.quote-card{
+
+    background:white;
+
+    text-align:center;
+
+}
+
+.quote-card i{
+
+    color:var(--primary);
+
+}
+
+
+/* ======================================================
+                ICON CIRCLES
+====================================================== */
+
+.circle-icon{
+
+    width:90px;
+
+    height:90px;
+
+    background:#eef8ee;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin:auto;
+
+}
+
+.circle-icon i{
+
+    font-size:38px;
+
+    color:var(--primary);
+
+}
+
+
+/* ======================================================
+                FOOTER
+====================================================== */
+
+.footer{
+
+    margin-top:70px;
+
+    padding:40px;
+
+    background:white;
+
+    border-top:1px solid rgba(0,0,0,.08);
+
+}
+
+.footer h5{
+
+    color:var(--primary);
+
+}
+
+.footer a{
+
+    color:var(--text-light);
+
+}
+
+.footer a:hover{
+
+    color:var(--primary);
+
+}
+
+
+/* ======================================================
+                TABLES
+====================================================== */
+
+.table{
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+}
+
+.table thead{
+
+    background:var(--primary);
+
+    color:white;
+
+}
+
+
+/* ======================================================
+                ALERTS
+====================================================== */
+
+.alert-success{
+
+    background:#eef8ee;
+
+    border:none;
+
+    color:var(--primary-dark);
+
+    border-left:5px solid var(--primary);
+
+}
+
+
+/* ======================================================
+                ANIMATIONS
+====================================================== */
+
+.zoom{
+
+    transition:.3s;
+
+}
+
+.zoom:hover{
+
+    transform:scale(1.05);
+
+}
+
+.rotate:hover{
+
+    transform:rotate(4deg);
+
+}
+
+.shadow-hover{
+
+    transition:.3s;
+
+}
+
+.shadow-hover:hover{
+
+    box-shadow:0 20px 40px rgba(0,0,0,.15);
+
+}
+
+
+/* ======================================================
+                BADGE COLORS
+====================================================== */
+
+.badge-green{
+
+    background:#eef8ee;
+
+    color:var(--primary);
+
+}
+
+.badge-yellow{
+
+    background:#fff7dc;
+
+    color:#b77900;
+
+}
+
+
+/* ======================================================
+                CUSTOM SCROLL AREA
+====================================================== */
+
+.scroll-box{
+
+    max-height:450px;
+
+    overflow-y:auto;
+
+    padding-right:10px;
+
+}
+
+
+/* ======================================================
+                RESPONSIVE
+====================================================== */
+
+@media(max-width:1200px){
+
+.hero-section h1{
+
+font-size:3rem;
+
+}
+
+}
+
+
+@media(max-width:992px){
+
+.container-fluid{
+
+padding:20px;
+
+}
+
+.hero-section{
+
+text-align:center;
+
+padding:50px 30px!important;
+
+}
+
+.hero-section img{
+
+margin-top:40px;
+
+max-width:300px;
+
+}
+
+.display-4{
+
+font-size:2.6rem;
+
+}
+
+.display-5{
+
+font-size:2.3rem;
+
+}
+
+.stats-card{
+
+margin-bottom:20px;
+
+}
+
+.day-card{
+
+margin-bottom:20px;
+
+}
+
+}
+
+
+@media(max-width:768px){
+
+.hero-section{
+
+padding:40px 20px!important;
+
+}
+
+.btn-lg{
+
+width:100%;
+
+margin-bottom:15px;
+
+}
+
+.eco-card{
+
+margin-bottom:20px;
+
+}
+
+.planner-header{
+
+padding:35px;
+
+text-align:center;
+
+}
+
+}
+
+
+@media(max-width:576px){
+
+.display-4{
+
+font-size:2.2rem;
+
+}
+
+.display-5{
+
+font-size:2rem;
+
+}
+
+.sidebar-heading{
+
+display:none;
+
+}
+
+.card-body{
+
+padding:1.5rem;
+
+}
+
+.container-fluid{
+
+padding:15px;
+
+}
+
+}
+
+
+/* ======================================================
+                END OF FILE
+====================================================== */

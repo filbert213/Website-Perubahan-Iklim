@@ -1,0 +1,174 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <!-- Header -->
+    <div class="text-center mb-5">
+
+        <span class="badge bg-success px-3 py-2">
+            📰 Climate Change Updates
+        </span>
+
+        <h1 class="display-5 fw-bold mt-3">
+            Climate News
+        </h1>
+
+        <p class="text-muted">
+            Stay informed with the latest environmental news and climate initiatives.
+        </p>
+
+    </div>
+
+    <!-- Search -->
+    <div class="row justify-content-center mb-4">
+
+        <div class="col-lg-6">
+
+            <div class="input-group shadow-sm">
+
+                <span class="input-group-text bg-white">
+                    <i class="fa-solid fa-search text-success"></i>
+                </span>
+
+                <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Search climate news...">
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- Categories -->
+
+    <div class="text-center mb-5">
+
+        <button class="btn btn-success m-1">All</button>
+        <button class="btn btn-outline-success m-1">Energy</button>
+        <button class="btn btn-outline-success m-1">Climate</button>
+        <button class="btn btn-outline-success m-1">Technology</button>
+        <button class="btn btn-outline-success m-1">Ocean</button>
+        <button class="btn btn-outline-success m-1">Forest</button>
+
+    </div>
+
+    <!-- News Cards -->
+
+    <div class="row g-4">
+
+        {% for i in range(6) %}
+
+        <div class="col-lg-4 col-md-6">
+
+            <div class="card h-100 shadow-sm border-0 rounded-4 eco-card">
+
+                <img
+                    src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=800"
+                    class="card-img-top"
+                    style="height:220px; object-fit:cover;">
+
+                <div class="card-body">
+
+                    <span class="badge bg-success mb-3">
+
+                        Climate
+
+                    </span>
+
+                    <h4 class="card-title">
+
+                        Renewable Energy Continues to Expand Worldwide
+
+                    </h4>
+
+                    <p class="text-muted">
+
+                        Governments and organizations are investing
+                        heavily in renewable energy to reduce carbon
+                        emissions and combat climate change.
+
+                    </p>
+
+                </div>
+
+                <div class="card-footer bg-white border-0">
+
+                    <small class="text-muted">
+
+                        July 2026
+
+                    </small>
+
+                    <a
+                        href="#"
+                        class="btn btn-success float-end">
+
+                        Read More
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        {% endfor %}
+
+    </div>
+
+    <!-- Newsletter -->
+
+    <div class="card border-0 shadow rounded-4 mt-5">
+
+        <div class="card-body p-5 text-center">
+
+            <i class="fa-solid fa-earth-americas fa-4x text-success mb-3"></i>
+
+            <h2>
+
+                Never Miss Climate News
+
+            </h2>
+
+            <p class="text-muted">
+
+                Receive the latest environmental news and sustainability
+                updates directly from EcoPath AI.
+
+            </p>
+
+            <div class="row justify-content-center mt-4">
+
+                <div class="col-lg-5">
+
+                    <div class="input-group">
+
+                        <input
+                            type="email"
+                            class="form-control"
+                            placeholder="Enter your email">
+
+                        <button class="btn btn-success">
+
+                            Subscribe
+
+                        </button>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

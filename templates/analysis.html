@@ -1,0 +1,338 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container-fluid">
+
+    <!-- Header -->
+    <div class="text-center mb-5">
+
+        <span class="badge bg-success px-3 py-2">
+            🤖 Google Gemini AI
+        </span>
+
+        <h1 class="display-5 fw-bold mt-3">
+            AI Climate Lifestyle Analysis
+        </h1>
+
+        <p class="text-muted">
+
+            Tell us about your daily lifestyle and receive
+            personalized sustainability recommendations.
+
+        </p>
+
+    </div>
+
+    <div class="row">
+
+        <!-- ================= FORM ================= -->
+
+        <div class="col-lg-6">
+
+            <div class="card shadow border-0 rounded-4">
+
+                <div class="card-body p-4">
+
+                    <h3 class="mb-4">
+
+                        Lifestyle Assessment
+
+                    </h3>
+
+                    <form method="POST" action="/analysis">
+
+                        <!-- Transportation -->
+
+                        <div class="mb-4">
+
+                            <label class="form-label">
+
+                                🚗 Transportation
+
+                            </label>
+
+                            <select class="form-select" name="transport">
+
+                                <option>Car</option>
+
+                                <option>Motorcycle</option>
+
+                                <option>Public Transport</option>
+
+                                <option>Bicycle</option>
+
+                                <option>Walk</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            <label class="form-label">
+
+                                Distance per day (km)
+
+                            </label>
+
+                            <input
+                                type="number"
+                                class="form-control"
+                                name="distance"
+                                placeholder="Example: 15">
+
+                        </div>
+
+                        <!-- Electricity -->
+
+                        <div class="mb-4">
+
+                            <label class="form-label">
+
+                                💡 AC Usage (hours/day)
+
+                            </label>
+
+                            <input
+                                type="number"
+                                class="form-control"
+                                name="ac">
+
+                        </div>
+
+                        <div class="mb-4">
+
+                            <label class="form-label">
+
+                                💻 Computer Usage (hours/day)
+
+                            </label>
+
+                            <input
+                                type="number"
+                                class="form-control"
+                                name="computer">
+
+                        </div>
+
+                        <!-- Diet -->
+
+                        <div class="mb-4">
+
+                            <label class="form-label">
+
+                                🍽 Diet
+
+                            </label>
+
+                            <select class="form-select" name="diet">
+
+                                <option>Mostly Meat</option>
+
+                                <option>Balanced</option>
+
+                                <option>Vegetarian</option>
+
+                                <option>Vegan</option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- Plastic -->
+
+                        <div class="mb-4">
+
+                            <label class="form-label">
+
+                                🥤 Plastic Usage
+
+                            </label>
+
+                            <select class="form-select" name="plastic">
+
+                                <option>Low</option>
+
+                                <option>Medium</option>
+
+                                <option>High</option>
+
+                            </select>
+
+                        </div>
+
+                        <!-- Water -->
+
+                        <div class="mb-4">
+
+                            <label class="form-label">
+
+                                🚿 Shower Duration
+
+                            </label>
+
+                            <select class="form-select" name="water">
+
+                                <option>Under 5 minutes</option>
+
+                                <option>5-10 minutes</option>
+
+                                <option>More than 10 minutes</option>
+
+                            </select>
+
+                        </div>
+
+                        <div class="d-grid">
+
+                            <button class="btn btn-success btn-lg">
+
+                                <i class="fa-solid fa-wand-magic-sparkles"></i>
+
+                                Analyze with Gemini AI
+
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- ================= RESULT ================= -->
+
+        <div class="col-lg-6">
+
+            <div class="card shadow border-0 rounded-4 h-100">
+
+                <div class="card-body p-4">
+
+                    <h3 class="mb-4">
+
+                        AI Analysis Result
+
+                    </h3>
+
+                    <!-- Loading -->
+
+                    <div id="loading" style="display:none;">
+
+                        <div class="text-center py-5">
+
+                            <div class="spinner-border text-success"></div>
+
+                            <h5 class="mt-4">
+
+                                Gemini is analyzing your lifestyle...
+
+                            </h5>
+
+                        </div>
+
+                    </div>
+
+                    <!-- Placeholder -->
+
+                    {% if not result %}
+
+                    <div class="text-center py-5">
+
+                        <i class="fa-solid fa-leaf fa-5x text-success mb-4"></i>
+
+                        <h5>
+
+                            Your analysis will appear here.
+
+                        </h5>
+
+                        <p class="text-muted">
+
+                            Complete the form and click
+                            <strong>Analyze with Gemini AI</strong>.
+
+                        </p>
+
+                    </div>
+
+                    {% endif %}
+
+                    <!-- AI RESULT -->
+
+                    {% if result %}
+
+                    <div class="mb-4">
+
+                        <h6>Sustainability Score</h6>
+
+                        <div class="progress">
+
+                            <div
+                                class="progress-bar bg-success"
+                                style="width:{{score}}%;">
+
+                                {{score}}%
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                    <div class="card bg-light border-0 mb-3">
+
+                        <div class="card-body">
+
+                            <h5>
+
+                                🔥 Biggest Impact
+
+                            </h5>
+
+                            <p>
+
+                                {{impact}}
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    <div class="card bg-light border-0 mb-3">
+
+                        <div class="card-body">
+
+                            <h5>
+
+                                🤖 AI Recommendation
+
+                            </h5>
+
+                            <p>
+
+                                {{result}}
+
+                            </p>
+
+                        </div>
+
+                    </div>
+
+                    {% endif %}
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+{% endblock %}

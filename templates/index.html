@@ -1,0 +1,308 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<!-- Hero Section -->
+<div class="container-fluid">
+
+    <div class="row align-items-center hero-section rounded-4 p-5 mb-5 shadow-sm">
+
+        <div class="col-lg-7" data-aos="fade-right">
+
+            <span class="badge bg-success px-3 py-2 mb-3">
+                AI Powered Climate Assistant
+            </span>
+
+            <h1 class="display-4 fw-bold mb-3">
+                Make Every Day
+                <span class="text-success">Greener</span>
+            </h1>
+
+            <p class="lead text-muted mb-4">
+
+                EcoPath AI helps you understand your lifestyle,
+                discover its environmental impact,
+                and receive personalized recommendations powered by
+                Google Gemini.
+
+            </p>
+
+            <a href="/analysis" class="btn btn-success btn-lg me-3">
+                <i class="fa-solid fa-robot"></i>
+                Start AI Analysis
+            </a>
+
+            <a href="/news" class="btn btn-outline-success btn-lg">
+                Climate News
+            </a>
+
+        </div>
+
+        <div class="col-lg-5 text-center" data-aos="fade-left">
+
+            <div class="hero-earth">
+                <i id="earthIcon" class="fa-solid fa-earth-americas"></i>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Quick Statistics -->
+
+<div class="row g-4 mb-5">
+
+    <div class="col-lg-4">
+
+        <div class="card eco-card h-100 shadow-sm">
+
+            <div class="card-body">
+
+                <i class="fa-solid fa-newspaper fa-3x text-success mb-3"></i>
+
+                <h3>Climate News</h3>
+
+                <p class="text-muted">
+
+                    Read the latest climate change
+                    news from trusted sources.
+
+                </p>
+
+                <a href="/news" class="btn btn-success">
+
+                    Explore
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-4">
+
+        <div class="card eco-card h-100 shadow-sm">
+
+            <div class="card-body">
+
+                <i class="fa-solid fa-robot fa-3x text-success mb-3"></i>
+
+                <h3>AI Lifestyle Analysis</h3>
+
+                <p class="text-muted">
+
+                    Discover how your daily habits affect
+                    the environment using Google Gemini AI.
+
+                </p>
+
+                <a href="/analysis" class="btn btn-success">
+
+                    Analyze
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <div class="col-lg-4">
+
+        <div class="card eco-card h-100 shadow-sm">
+
+            <div class="card-body">
+
+                <i class="fa-solid fa-calendar-check fa-3x text-success mb-3"></i>
+
+                <h3>AI Lifestyle Planner</h3>
+
+                <p class="text-muted">
+
+                    Receive a personalized weekly
+                    eco-friendly action plan.
+
+                </p>
+
+                <a href="/planner" class="btn btn-success">
+
+                    View Planner
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- How It Works -->
+
+<div class="card border-0 shadow-sm rounded-4 mb-5">
+
+    <div class="card-body p-5">
+
+        <h2 class="fw-bold text-center mb-5">
+
+            How EcoPath AI Works
+
+        </h2>
+
+        <div class="row text-center">
+
+            <div class="col-md-3" data-aos="zoom-in">
+
+                <div class="mb-3">
+
+                    <i class="fa-solid fa-user fa-3x text-success"></i>
+
+                </div>
+
+                <h5>You</h5>
+
+                <p class="text-muted">
+
+                    Fill in a short lifestyle questionnaire.
+
+                </p>
+
+            </div>
+
+            <div class="col-md-3" data-aos="zoom-in">
+
+                <div class="mb-3">
+
+                    <i class="fa-solid fa-list-check fa-3x text-success"></i>
+
+                </div>
+
+                <h5>Assessment</h5>
+
+                <p class="text-muted">
+
+                    Tell us about transportation,
+                    electricity, diet, and daily habits.
+
+                </p>
+
+            </div>
+
+            <div class="col-md-3" data-aos="zoom-in">
+
+                <div class="mb-3">
+
+                    <i class="fa-solid fa-brain fa-3x text-success"></i>
+
+                </div>
+
+                <h5>Gemini AI</h5>
+
+                <p class="text-muted">
+
+                    AI analyzes your lifestyle and
+                    identifies your biggest impacts.
+
+                </p>
+
+            </div>
+
+            <div class="col-md-3" data-aos="zoom-in">
+
+                <div class="mb-3">
+
+                    <i class="fa-solid fa-seedling fa-3x text-success"></i>
+
+                </div>
+
+                <h5>Action Plan</h5>
+
+                <p class="text-muted">
+
+                    Receive realistic recommendations
+                    to build greener habits.
+
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- Why EcoPath -->
+
+<div class="row align-items-center">
+
+    <div class="col-lg-6">
+
+        <i class="fa-solid fa-lightbulb fa-10x"></i>
+
+    </div>
+
+    <div class="col-lg-6">
+
+        <h2 class="fw-bold mb-4">
+
+            Why Choose EcoPath AI?
+
+        </h2>
+
+        <div class="mb-3">
+
+            <h5><i class="fa-solid fa-robot fa-sm"></i> Personalized AI</h5>
+
+            <p class="text-muted">
+
+                Recommendations generated specifically
+                for your lifestyle.
+
+            </p>
+
+        </div>
+
+        <div class="mb-3">
+
+            <h5><i class="fa-solid fa-earth-americas fa-sm"></i>  Climate Education</h5>
+
+            <p class="text-muted">
+
+                Stay informed with reliable climate
+                news and information.
+
+            </p>
+
+        </div>
+
+        <div class="mb-3">
+
+            <h5><i class="fa-solid fa-seedling fa-sm"></i>  Sustainable Habits</h5>
+
+            <p class="text-muted">
+
+                Turn AI recommendations into
+                practical weekly actions.
+
+            </p>
+
+        </div>
+
+        <a href="/analysis" class="btn btn-success btn-lg mt-3">
+
+            Get Started
+
+        </a>
+
+    </div>
+
+</div>
+
+{% endblock %}
