@@ -4,160 +4,121 @@
 
 <div class="container-fluid">
 
-    <!-- Header -->
-    <div class="text-center mb-5">
+    <!-- HEADER -->
+    <div class="mb-5" data-aos="fade-down">
 
-        <span class="badge bg-success px-3 py-2">
-            📰 Climate Change Updates
+        <span class="badge bg-success-subtle text-success px-3 py-2 mb-3">
+            🌍 Environmental Information
         </span>
 
-        <h1 class="display-5 fw-bold mt-3">
-            Climate News
+        <h1 class="fw-bold">
+            Climate & Environment News
         </h1>
 
-        <p class="text-muted">
-            Stay informed with the latest environmental news and climate initiatives.
+        <p class="lead text-muted">
+            Stay informed about climate change, nature,
+            pollution, sustainability, and environmental innovation.
         </p>
 
     </div>
 
-    <!-- Search -->
-    <div class="row justify-content-center mb-4">
 
-        <div class="col-lg-6">
-
-            <div class="input-group shadow-sm">
-
-                <span class="input-group-text bg-white">
-                    <i class="fa-solid fa-search text-success"></i>
-                </span>
-
-                <input
-                    type="text"
-                    class="form-control"
-                    placeholder="Search climate news...">
-
-            </div>
-
-        </div>
-
-    </div>
-
-    <!-- Categories -->
-
-    <div class="text-center mb-5">
-
-        <button class="btn btn-success m-1">All</button>
-        <button class="btn btn-outline-success m-1">Energy</button>
-        <button class="btn btn-outline-success m-1">Climate</button>
-        <button class="btn btn-outline-success m-1">Technology</button>
-        <button class="btn btn-outline-success m-1">Ocean</button>
-        <button class="btn btn-outline-success m-1">Forest</button>
-
-    </div>
-
-    <!-- News Cards -->
+    <!-- NEWS GRID -->
 
     <div class="row g-4">
 
-        {% for i in range(6) %}
+        {% if articles %}
 
-        <div class="col-lg-4 col-md-6">
+            {% for article in articles %}
 
-            <div class="card h-100 shadow-sm border-0 rounded-4 eco-card">
+            <div class="col-md-6 col-xl-4" data-aos="fade-up">
 
-                <img
-                    src="https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=800"
-                    class="card-img-top"
-                    style="height:220px; object-fit:cover;">
+                <div class="card eco-card news-card h-100 border-0 shadow-sm">
 
-                <div class="card-body">
+                    <!-- IMAGE -->
 
-                    <span class="badge bg-success mb-3">
+                    {% if article.urlToImage %}
 
-                        Climate
+                    <img
+                        src="{{ article.urlToImage }}"
+                        class="card-img-top news-image"
+                        alt="Environmental news"
+                        onerror="this.style.display='none';"
+                    >
 
-                    </span>
+                    {% endif %}
 
-                    <h4 class="card-title">
 
-                        Renewable Energy Continues to Expand Worldwide
+                    <!-- CONTENT -->
 
-                    </h4>
+                    <div class="card-body d-flex flex-column p-4">
 
-                    <p class="text-muted">
+                        <!-- CATEGORY -->
 
-                        Governments and organizations are investing
-                        heavily in renewable energy to reduce carbon
-                        emissions and combat climate change.
+                        <span class="badge bg-success-subtle text-success align-self-start px-3 py-2 mb-3">
 
-                    </p>
+                            {{ article.category }}
 
-                </div>
+                        </span>
 
-                <div class="card-footer bg-white border-0">
 
-                    <small class="text-muted">
+                        <!-- TITLE -->
 
-                        July 2026
+                        <h4 class="fw-bold news-title">
 
-                    </small>
+                            {{ article.title }}
 
-                    <a
-                        href="#"
-                        class="btn btn-success float-end">
+                        </h4>
 
-                        Read More
 
-                    </a>
+                        <!-- DESCRIPTION -->
 
-                </div>
+                        <p class="text-muted news-description">
 
-            </div>
+                            {% if article.description %}
 
-        </div>
+                                {{ article.description }}
 
-        {% endfor %}
+                            {% endif %}
 
-    </div>
+                            {% if article.content and article.content != article.description %}
 
-    <!-- Newsletter -->
+                                {{ article.content }}
 
-    <div class="card border-0 shadow rounded-4 mt-5">
+                            {% endif %}
 
-        <div class="card-body p-5 text-center">
+                        </p>
 
-            <i class="fa-solid fa-earth-americas fa-4x text-success mb-3"></i>
 
-            <h2>
+                        <!-- SOURCE -->
 
-                Never Miss Climate News
+                        <div class="mt-auto">
 
-            </h2>
+                            <small class="text-muted d-block mb-3">
 
-            <p class="text-muted">
+                                <i class="fa-solid fa-globe me-1"></i>
 
-                Receive the latest environmental news and sustainability
-                updates directly from EcoPath AI.
+                                {{ article.source.name if article.source else "Environmental News" }}
 
-            </p>
+                            </small>
 
-            <div class="row justify-content-center mt-4">
 
-                <div class="col-lg-5">
+                            <!-- BUTTON -->
 
-                    <div class="input-group">
+                            <a
+                                href="{{ article.url }}"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                class="btn btn-success w-100"
+                            >
 
-                        <input
-                            type="email"
-                            class="form-control"
-                            placeholder="Enter your email">
+                                Read More
 
-                        <button class="btn btn-success">
+                                <i class="fa-solid fa-arrow-up-right-from-square ms-2"></i>
 
-                            Subscribe
+                            </a>
 
-                        </button>
+                        </div>
 
                     </div>
 
@@ -165,7 +126,39 @@
 
             </div>
 
-        </div>
+            {% endfor %}
+
+
+        {% else %}
+
+            <!-- NO NEWS -->
+
+            <div class="col-12">
+
+                <div class="card border-0 shadow-sm rounded-4">
+
+                    <div class="card-body text-center py-5">
+
+                        <i class="fa-solid fa-earth-americas fa-3x text-success mb-3"></i>
+
+                        <h4>
+                            No environmental news available
+                        </h4>
+
+                        <p class="text-muted">
+
+                            We couldn't retrieve environmental
+                            news right now. Please try again later.
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        {% endif %}
 
     </div>
 

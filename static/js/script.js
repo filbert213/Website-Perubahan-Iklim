@@ -119,6 +119,27 @@ function updateProgress() {
 
 
 /* =====================================================
+   Gemini Chat
+===================================================== */
+
+async function sendMessage() {
+
+    const input = document.getElementById("message");
+
+    const response = await fetch("/chat", {
+        method: "POST",
+        body: new URLSearchParams({
+            message: input.value
+        })
+    });
+
+    const data = await response.json();
+
+    console.log(data.reply);
+}
+
+
+/* =====================================================
    Navbar Shadow
 ===================================================== */
 

@@ -1,55 +1,34 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, jsonify
+
+from services.gemini import chat, reset_chat
+import os
+
+from dotenv import load_dotenv
+
+load_dotenv()
+
+from services.news import get_climate_news
 from services.gemini import analyze_lifestyle
 
 app = Flask(__name__)
 
-# ----
+
+# =========================
 # HOME
-# ----
+# =========================
 
 @app.route("/")
 def home():
     return render_template("index.html")
 
 
-# ----
-# NEWS
-# ----
+# =========================
+# CLIMATE NEWS
+# =========================
 
 @app.route("/news")
 def news():
-
-    # Placeholder data
-    articles = [
-
-        {
-            "title":"Renewable Energy Continues to Expand",
-            "description":"Countries are investing heavily in renewable energy to reduce emissions.",
-            "image":"https://images.unsplash.com/photo-1473448912268-2022ce9509d8?w=800",
-            "category":"Energy",
-            "date":"Today",
-            "url":"#"
-        },
-
-        {
-            "title":"Ocean Temperatures Reach Record High",
-            "description":"Scientists warn that rising ocean temperatures affect marine ecosystems.",
-            "image":"https://images.unsplash.com/photo-1500375592092-40eb2168fd21?w=800",
-            "category":"Ocean",
-            "date":"Yesterday",
-            "url":"#"
-        },
-
-        {
-            "title":"Cities Plant More Urban Forests",
-            "description":"Urban greening projects improve air quality and reduce heat.",
-            "image":"https://images.unsplash.com/photo-1441974231531-c6227db76b6e?w=800",
-            "category":"Forest",
-            "date":"2 days ago",
-            "url":"#"
-        }
-
-    ]
+    articles = get_climate_news()
 
     return render_template(
         "news.html",
@@ -57,118 +36,71 @@ def news():
     )
 
 
-# -----------
-# AI ANALYSIS
-# -----------
+# =========================
+# AI CHAT
+# =========================
 
-@app.route("/analysis", methods=["GET","POST"])
+@app.route("/chat", methods=["POST"])
+def chat_route():
+
+    user_message = request.form.get("message", "").strip()
+
+    if not user_message:
+        return jsonify({
+            "reply": "Please enter a message."
+        })
+
+    reply = chat(user_message)
+
+    return jsonify({
+        "reply": reply
+    })
+
+
+# =========================
+# RESET CHAT
+# =========================
+
+@app.route("/reset-chat")
+def reset():
+
+    reset_chat()
+
+    return jsonify({
+        "success": True
+    })
+
+
+# =========================
+# AI ANALYSIS
+# =========================
+
+@app.route("/analysis")
 def analysis():
 
-    if request.method == "POST":
-
-        transport = request.form.get("transport")
-        distance = request.form.get("distance")
-        ac = request.form.get("ac")
-        computer = request.form.get("computer")
-        diet = request.form.get("diet")
-        plastic = request.form.get("plastic")
-        water = request.form.get("water")
-
-        user_data = {
-            "transport":transport,
-            "distance":distance,
-            "ac":ac,
-            "computer":computer,
-            "diet":diet,
-            "plastic":plastic,
-            "water":water
-        }
-
-        ai = analyze_lifestyle(user_data)
-
-        return render_template(
-
-            "analysis.html",
-
-            result=ai["recommendation"],
-
-            score=ai["score"],
-
-            impact=ai["impact"]
-
-        )
-
-    return render_template("analysis.html")
+    return render_template(
+        "analysis.html"
+    )
 
 
-# -------
-# PLANNER
-# -------
+# =========================
+# LIFESTYLE PLANNER
+# =========================
 
 @app.route("/planner")
 def planner():
 
-    tasks = [
-
-        {
-            "day":"Monday",
-            "tasks":[
-                "Bring a reusable bottle",
-                "Walk for short trips",
-                "Turn off unused lights"
-            ]
-        },
-
-        {
-            "day":"Wednesday",
-            "tasks":[
-                "Use public transportation",
-                "Recycle plastic bottles",
-                "Avoid plastic bags"
-            ]
-        },
-
-        {
-            "day":"Friday",
-            "tasks":[
-                "Eat one vegetarian meal",
-                "Take a shorter shower",
-                "Share one climate fact"
-            ]
-        }
-
-    ]
-
     return render_template(
-        "planner.html",
-        tasks=tasks
+        "planner.html"
     )
 
 
-# -----
-# ABOUT
-# -----
-
-@app.route("/about")
-def about():
-    return render_template("about.html")
-
-
-# -----
-# ERROR
-# -----
-
-@app.errorhandler(404)
-def not_found(error):
-    return render_template("404.html"),404
-
-
-# ---
-# RUN
-# ---
+# =========================
+# RUN APP
+# =========================
 
 if __name__ == "__main__":
-
     app.run(
-        debug=True
+        debug=True,
+        port=5000
     )
