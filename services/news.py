@@ -55,9 +55,6 @@ def get_article_category(article):
         "wind power",
         "renewable energy",
         "renewable",
-        "electric vehicle",
-        "electric vehicles",
-        "battery",
         "clean energy",
         "hydrogen"
     ]):
@@ -98,7 +95,7 @@ def get_article_category(article):
         return "🌱 Sustainability"
 
     # Default
-    return "🌎 Environment"
+    return None
 
 
 def get_climate_news():
@@ -174,5 +171,10 @@ def get_climate_news():
     # Categorize articles AFTER the try/except
     for article in articles:
         article["category"] = get_article_category(article)
+
+    articles = [
+    article for article in articles
+    if article["category"] is not None
+    ]
 
     return articles

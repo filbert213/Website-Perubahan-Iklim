@@ -1,127 +1,116 @@
 import os
-
 from dotenv import load_dotenv
 from google import genai
 
+# Load .env
 load_dotenv()
 
-client = genai.Client(
-    api_key=os.getenv("GEMINI_API_KEY")
-)
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 
-SYSTEM_PROMPT = """
-You are EcoPath AI.
+if not GEMINI_API_KEY:
+    raise ValueError("GEMINI_API_KEY is missing from your .env file.")
 
-You are a friendly AI sustainability assistant.
+# Gemini client
+client = genai.Client(api_key=GEMINI_API_KEY)
 
-Your goals are:
+# Current model
+MODEL = "gemini-3.5-flash"
 
-• Help users understand climate change.
-• Explain environmental topics in simple language.
-• Give practical eco-friendly lifestyle advice.
-• Create weekly sustainability plans.
-• Help reduce carbon footprints.
-• Recommend realistic actions for students.
 
-Rules:
+# ============================================================
+# LIFESTYLE ANALYSIS
+# ============================================================
 
-- Keep answers friendly.
-- Keep answers concise unless the user asks for detail.
-- Focus on climate, sustainability, recycling, renewable energy,
-  transportation, food, electricity, and environmental education.
-- If users ask unrelated questions, politely answer briefly and steer the
-  conversation back toward sustainability when appropriate.
+def analyze_lifestyle(lifestyle):
+
+    prompt = f"""
+You are EcoPath AI, an environmental lifestyle assistant.
+
+Analyze the user's lifestyle and explain their environmental impact.
+
+USER LIFESTYLE:
+{lifestyle}
+
+Return the response using EXACTLY these sections:
+
+CARBON FOOTPRINT
+Give a rating from:
+Very Low
+Low
+Moderate
+High
+Very High
+
+Then give a short explanation.
+
+
+MAIN ENVIRONMENTAL IMPACTS
+Explain the user's biggest environmental impacts based only on
+the information they provided.
+
+
+RECOMMENDATIONS
+Give exactly 5 practical recommendations specifically based
+on their answers.
+
+
+CONCLUSION
+Give a short encouraging conclusion.
+
+IMPORTANT:
+- Return only HTML. Do not use Markdown.
+- Do not use ###.
+- Do not use **.
+- Do not use emojis.
+- Keep the language simple and clear.
+- Do not invent information.
+- Make each section easy to read.
 """
 
+    try:
 
-class EcoPathChat:
-
-    def __init__(self):
-
-        self.chat = client.chats.create(
-            model="gemini-2.5-flash",
-            history=[
-                {
-                    "role": "user",
-                    "parts": [{"text": SYSTEM_PROMPT}]
-                },
-                {
-                    "role": "model",
-                    "parts": [{"text": "Hello! I'm EcoPath AI. 🌱"}]
-                }
-            ]
+        response = client.models.generate_content(
+            model=MODEL,
+            contents=prompt
         )
-
-    def send(self, message):
-
-        response = self.chat.send_message(message)
 
         return response.text
 
-    def reset(self):
+    except Exception as e:
 
-        self.__init__()
+        return (
+            "Unable to generate your EcoPath analysis right now.\n\n"
+            f"Error: {str(e)}"
+        )
 
 
-# Global chat instance
-chatbot = EcoPathChat()
+# ============================================================
+# GEMINI CHAT
+# ============================================================
+
+chat_history = []
 
 
 def chat(message):
-    """
-    Send a message to Gemini while keeping conversation history.
-    """
 
-    return chatbot.send(message)
+    try:
+
+        response = client.models.generate_content(
+            model=MODEL,
+            contents=message
+        )
+
+        return response.text
+
+    except Exception as e:
+
+        return f"Sorry, I couldn't respond right now. Error: {str(e)}"
 
 
 def reset_chat():
-    """
-    Starts a new conversation.
-    """
 
-    chatbot.reset()
+    global chat_history
 
+    chat_history = []
 
-def analyze_lifestyle(data):
-
-    prompt = f"""
-Analyze the following lifestyle.
-
-Transportation:
-{data.get("transport")}
-
-Electricity:
-{data.get("electricity")}
-
-Diet:
-{data.get("diet")}
-
-Recycling:
-{data.get("recycling")}
-
-Shopping:
-{data.get("shopping")}
-
-Return:
-
-1. Carbon footprint level
-2. Main impacts
-3. Five recommendations
-4. Encouraging conclusion
-"""
-
-    return chatbot.send(prompt)
-
-
-def create_weekly_plan(goal):
-
-    prompt = f"""
-Create a detailed 7-day eco-friendly plan.
-
-Goal:
-
-{goal}
-"""
-
-    return chatbot.send(prompt)
+    return True

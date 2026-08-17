@@ -2,6 +2,7 @@ from flask import Flask, render_template, request, jsonify
 
 from services.gemini import chat, reset_chat
 import os
+import markdown
 
 from dotenv import load_dotenv
 
@@ -75,11 +76,30 @@ def reset():
 # AI ANALYSIS
 # =========================
 
-@app.route("/analysis")
+@app.route("/analysis", methods=["GET", "POST"])
 def analysis():
 
+    if request.method == "GET":
+        return render_template("analysis.html")
+
+    lifestyle = {
+        "transportation": request.form.get("transportation", ""),
+        "electricity": request.form.get("electricity", ""),
+        "diet": request.form.get("diet", ""),
+        "habits": request.form.get("habits", "")
+    }
+
+    result = analyze_lifestyle(lifestyle)
+
+    # Convert Gemini's Markdown response into HTML
+    formatted_result = markdown.markdown(
+        result,
+        extensions=["extra"]
+    )
+
     return render_template(
-        "analysis.html"
+        "analysis.html",
+        result=formatted_result
     )
 
 
@@ -102,5 +122,5 @@ def planner():
 if __name__ == "__main__":
     app.run(
         debug=True,
-        port=5000
+        port=5002
     )

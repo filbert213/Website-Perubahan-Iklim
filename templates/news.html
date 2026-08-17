@@ -2,123 +2,130 @@
 
 {% block content %}
 
-<div class="container-fluid">
+<!-- HEADER -->
+<div class="mb-5" data-aos="fade-down">
 
-    <!-- HEADER -->
-    <div class="mb-5" data-aos="fade-down">
+    <span class="badge bg-success-subtle text-success px-3 py-2 mb-3">
+        🌍 Environmental Information
+    </span>
 
-        <span class="badge bg-success-subtle text-success px-3 py-2 mb-3">
-            🌍 Environmental Information
-        </span>
+    <h1 class="fw-bold">
+        Climate & Environment News
+    </h1>
 
-        <h1 class="fw-bold">
-            Climate & Environment News
-        </h1>
+    <p class="lead text-muted">
+        Stay informed about climate change, nature,
+        pollution, sustainability, and environmental innovation.
+    </p>
 
-        <p class="lead text-muted">
-            Stay informed about climate change, nature,
-            pollution, sustainability, and environmental innovation.
-        </p>
-
-    </div>
+</div>
 
 
-    <!-- NEWS GRID -->
+<!-- NEWS GRID -->
 
-    <div class="row g-4">
+<div class="row g-4">
 
-        {% if articles %}
+    {% if articles %}
 
-            {% for article in articles %}
+        {% for article in articles %}
 
-            <div class="col-md-6 col-xl-4" data-aos="fade-up">
+        <!-- NEWS ARTICLE -->
+        <div class="col-md-6 col-xl-4 news-item" data-aos="fade-up">
 
-                <div class="card eco-card news-card h-100 border-0 shadow-sm">
+            <div class="card eco-card news-card h-100 border-0 shadow-sm position-relative">
 
-                    <!-- IMAGE -->
-
-                    {% if article.urlToImage %}
-
-                    <img
-                        src="{{ article.urlToImage }}"
-                        class="card-img-top news-image"
-                        alt="Environmental news"
-                        onerror="this.style.display='none';"
-                    >
-
-                    {% endif %}
+                <!-- X BUTTON -->
+                <button
+                    type="button"
+                    class="btn-close position-absolute top-0 end-0 m-3"
+                    aria-label="Remove article"
+                    onclick="this.closest('.news-item').remove();"
+                    style="z-index: 10; background-color: white; border-radius: 50%; padding: 8px;"
+                ></button>
 
 
-                    <!-- CONTENT -->
+                <!-- IMAGE -->
 
-                    <div class="card-body d-flex flex-column p-4">
+                {% if article.urlToImage %}
 
-                        <!-- CATEGORY -->
+                <img
+                    src="{{ article.urlToImage }}"
+                    class="card-img-top news-image"
+                    alt="Environmental news"
+                    onerror="this.style.display='none';"
+                >
 
-                        <span class="badge bg-success-subtle text-success align-self-start px-3 py-2 mb-3">
-
-                            {{ article.category }}
-
-                        </span>
-
-
-                        <!-- TITLE -->
-
-                        <h4 class="fw-bold news-title">
-
-                            {{ article.title }}
-
-                        </h4>
+                {% endif %}
 
 
-                        <!-- DESCRIPTION -->
+                <!-- CONTENT -->
 
-                        <p class="text-muted news-description">
+                <div class="card-body d-flex flex-column p-4">
 
-                            {% if article.description %}
+                    <!-- CATEGORY -->
 
-                                {{ article.description }}
+                    <span class="badge bg-success-subtle text-success align-self-start px-3 py-2 mb-3">
 
-                            {% endif %}
+                        {{ article.category }}
 
-                            {% if article.content and article.content != article.description %}
-
-                                {{ article.content }}
-
-                            {% endif %}
-
-                        </p>
+                    </span>
 
 
-                        <!-- SOURCE -->
+                    <!-- TITLE -->
 
-                        <div class="mt-auto">
+                    <h4 class="fw-bold news-title">
 
-                            <small class="text-muted d-block mb-3">
+                        {{ article.title }}
 
-                                <i class="fa-solid fa-globe me-1"></i>
-
-                                {{ article.source.name if article.source else "Environmental News" }}
-
-                            </small>
+                    </h4>
 
 
-                            <!-- BUTTON -->
+                    <!-- DESCRIPTION -->
 
-                            <a
-                                href="{{ article.url }}"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                class="btn btn-success w-100"
-                            >
+                    <p class="text-muted news-description">
 
-                                Read More
+                        {% if article.description %}
 
-                                <i class="fa-solid fa-arrow-up-right-from-square ms-2"></i>
+                            {{ article.description }}
 
-                            </a>
+                        {% endif %}
 
-                        </div>
+                        {% if article.content and article.content != article.description %}
+
+                            {{ article.content }}
+
+                        {% endif %}
+
+                    </p>
+
+
+                    <!-- SOURCE -->
+
+                    <div class="mt-auto">
+
+                        <small class="text-muted d-block mb-3">
+
+                            <i class="fa-solid fa-globe me-1"></i>
+
+                            {{ article.source.name if article.source else "Environmental News" }}
+
+                        </small>
+
+
+                        <!-- BUTTON -->
+
+                        <a
+                            href="{{ article.url }}"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            class="btn btn-success w-100"
+                        >
+
+                            Read More
+
+                            <i class="fa-solid fa-arrow-up-right-from-square ms-2"></i>
+
+                        </a>
 
                     </div>
 
@@ -126,41 +133,41 @@
 
             </div>
 
-            {% endfor %}
+        </div>
+
+        {% endfor %}
 
 
-        {% else %}
+    {% else %}
 
-            <!-- NO NEWS -->
+        <!-- NO NEWS -->
 
-            <div class="col-12">
+        <div class="col-12">
 
-                <div class="card border-0 shadow-sm rounded-4">
+            <div class="card border-0 shadow-sm rounded-4">
 
-                    <div class="card-body text-center py-5">
+                <div class="card-body text-center py-5">
 
-                        <i class="fa-solid fa-earth-americas fa-3x text-success mb-3"></i>
+                    <i class="fa-solid fa-earth-americas fa-3x text-success mb-3"></i>
 
-                        <h4>
-                            No environmental news available
-                        </h4>
+                    <h4>
+                        No environmental news available
+                    </h4>
 
-                        <p class="text-muted">
+                    <p class="text-muted">
 
-                            We couldn't retrieve environmental
-                            news right now. Please try again later.
+                        We couldn't retrieve environmental
+                        news right now. Please try again later.
 
-                        </p>
-
-                    </div>
+                    </p>
 
                 </div>
 
             </div>
 
-        {% endif %}
+        </div>
 
-    </div>
+    {% endif %}
 
 </div>
 
